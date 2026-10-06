@@ -62,15 +62,46 @@ async function collect(prev) {
   return results;
 }
 
+// Each question targets a real search query; answers use live numbers so the
+// text changes with every update (fresh, unique content that search engines reward).
 function faqFor({ verdict, met, total, updatedHuman, criteria }) {
   const list = criteria.map(c => c.rule.replace(/\.$/, "")).join("; ");
   const metNames = criteria.filter(c => c.met).map(c => c.title.toLowerCase());
+  const by = Object.fromEntries(criteria.map(c => [c.id, c]));
+  const now = c => (c && c.value != null ? c.display : "currently unavailable");
+  const isYes = verdict === "Yes.";
   return [
     {
       q: "Is the AI bubble over?",
-      a: verdict === "Yes."
+      a: isYes
         ? `Yes. As of ${updatedHuman}, all ${total} of our bubble criteria are met at the same time: Nvidia and the Nasdaq-100 are in deep drawdowns, Big Tech is cutting AI capex, and GPU rental prices have collapsed.`
         : `Not yet. As of ${updatedHuman}, ${met} of ${total} criteria that would signal the end of the AI bubble are met${metNames.length ? ` (${metNames.join(", ")})` : ""}. The answer only changes to yes when all ${total} are met at once.`,
+    },
+    {
+      q: "Has the AI bubble burst?",
+      a: isYes
+        ? `By our measures, yes: every signal of a burst is present at once as of ${updatedHuman}.`
+        : `No. A burst would show up as a crash in AI stocks, a deep tech bear market, falling Big Tech AI spending and a glut of cheap GPUs. As of ${updatedHuman}, ${met} of these ${total} signals are present.`,
+    },
+    {
+      q: "Is Nvidia in a bubble?",
+      a: `Nvidia is the clearest public bet on AI, so its stock is our first signal. Right now NVDA is ${now(by.nvda)}. ${by.nvda?.detail || ""} We would count it as a burst only at 50% or more below its all-time high; in 2000, Cisco, the leader of the dot-com boom, fell about 80%.`,
+    },
+    {
+      q: "Are AI stocks crashing?",
+      a: `Not by our definition unless the tech-heavy Nasdaq-100 is at least 30% below its record. It is currently ${now(by.ndx)}. ${by.ndx?.detail || ""}`,
+    },
+    {
+      q: "Is Big Tech still spending on AI?",
+      a: `Combined quarterly capital spending of Microsoft, Alphabet, Amazon and Meta is running at ${now(by.capex)}. ${by.capex?.detail || ""} Spending that funds data centers and chips is the fuel of the AI boom; a year-over-year decline would be a major warning sign.`,
+    },
+    {
+      q: "Are GPUs getting cheap? (H100 rental prices)",
+      a: `The median on-demand rental price of an Nvidia H100 GPU is ${now(by.gpu)}. ${by.gpu?.detail || ""} A price below $1 per GPU-hour would suggest the world built far more AI capacity than it can use.`,
+    },
+    {
+      q: "AI bubble vs. dot-com bubble: how do they compare?",
+      a: "Both share record capital spending on infrastructure ahead of profits and a few market leaders carrying the index. The dot-com bust ended with the Nasdaq-100 down about 83% and leaders like Cisco down about 80%. Unlike 2000, today's AI leaders are highly profitable, which is why our criteria require the money flow itself (capex, GPU prices) to reverse, not just stock prices.",
     },
     {
       q: "How do you decide whether the AI bubble has burst?",
@@ -82,7 +113,7 @@ function faqFor({ verdict, met, total, updatedHuman, criteria }) {
     },
     {
       q: "Where does the data come from and how often is it updated?",
-      a: "Stock and index prices come from Yahoo Finance (with Nasdaq.com as a fallback), Big Tech capital expenditures from quarterly SEC filings, and GPU rental prices from the Vast.ai marketplace. The page rebuilds automatically several times a day.",
+      a: "Stock and index prices come from Yahoo Finance (with Nasdaq.com as a fallback), Big Tech capital expenditures from quarterly SEC filings, and GPU rental prices from the Vast.ai marketplace. The page rebuilds automatically several times a day. This is not financial advice.",
     },
   ];
 }
@@ -92,10 +123,18 @@ function render(tpl, data) {
   const isYes = verdict === "Yes.";
   const month = new Date(updatedIso).toLocaleDateString("en-US", { month: "short", year: "numeric", timeZone: "UTC" });
 
-  const title = `Is the AI Bubble Over? ${verdict} (Live Tracker, ${month})`;
+  // Title: question + answer + freshness. ~55 chars so Google doesn't truncate it.
+  const title = `Is the AI Bubble Over? ${verdict} Live Tracker (${month})`;
+  // Description: answer first, then the related terms people search for. ~150 chars.
+  const short = new Date(updatedIso).toLocaleDateString("en-US", { month: "short", day: "numeric", timeZone: "UTC" });
   const description = isYes
-    ? `Yes — all ${total} signals of an AI bubble burst are met: Nvidia crash, Nasdaq bear market, Big Tech capex cuts and a GPU glut. Updated ${updatedHuman}.`
-    : `Not yet. ${met} of ${total} signals of an AI bubble burst are met — Nvidia, Nasdaq-100, Big Tech AI capex and GPU prices, tracked live. Updated ${updatedHuman}.`;
+    ? `Yes: the AI bubble has burst. All ${total} signals hit: Nvidia stock crash, AI stocks bear market, Big Tech capex cuts, GPU glut. Updated ${short}.`
+    : `Not yet. ${met}/${total} AI bubble signals hit. Live data on Nvidia stock, AI stocks, Big Tech AI spending and GPU prices. Updated ${short}.`;
+  const keywords = [
+    "AI bubble", "is the AI bubble over", "AI bubble burst", "has the AI bubble burst", "AI bubble tracker",
+    "Nvidia bubble", "is Nvidia a bubble", "NVDA stock", "AI stocks", "AI stock bubble", "AI stocks crash",
+    "tech bubble", "Nasdaq 100", "dot-com bubble vs AI", "AI capex", "hyperscaler capex", "GPU prices", "H100 price",
+  ].join(", ");
 
   const criteriaHtml = criteria.map((c, i) => `      <li class="item">
         <h3>${i + 1}. ${esc(c.title)}</h3>
@@ -122,7 +161,21 @@ function render(tpl, data) {
         isPartOf: { "@id": `${pageUrl}#website` }, inLanguage: "en",
         dateModified: updatedIso, datePublished: "2026-10-06",
         primaryImageOfPage: { "@type": "ImageObject", url: `${SITE.url}/${ogImage}`, width: 1200, height: 630 },
-        about: [{ "@type": "Thing", name: "AI bubble" }, { "@type": "Thing", name: "Artificial intelligence" }, { "@type": "Corporation", name: "Nvidia" }],
+        keywords,
+        about: [
+          { "@type": "Thing", name: "AI bubble" },
+          { "@type": "Thing", name: "Artificial intelligence", sameAs: "https://en.wikipedia.org/wiki/Artificial_intelligence" },
+          { "@type": "Thing", name: "Economic bubble", sameAs: "https://en.wikipedia.org/wiki/Economic_bubble" },
+        ],
+        mentions: [
+          { "@type": "Corporation", name: "Nvidia", tickerSymbol: "NVDA", sameAs: "https://en.wikipedia.org/wiki/Nvidia" },
+          { "@type": "Thing", name: "Nasdaq-100", sameAs: "https://en.wikipedia.org/wiki/Nasdaq-100" },
+          { "@type": "Corporation", name: "Microsoft", tickerSymbol: "MSFT" },
+          { "@type": "Corporation", name: "Alphabet", tickerSymbol: "GOOGL" },
+          { "@type": "Corporation", name: "Amazon", tickerSymbol: "AMZN" },
+          { "@type": "Corporation", name: "Meta Platforms", tickerSymbol: "META" },
+          { "@type": "Thing", name: "Dot-com bubble", sameAs: "https://en.wikipedia.org/wiki/Dot-com_bubble" },
+        ],
       },
       {
         "@type": "FAQPage", "@id": `${pageUrl}#faq`,
@@ -155,6 +208,7 @@ function render(tpl, data) {
     TITLE: esc(title),
     OG_TITLE: esc(`Is the AI Bubble over? ${verdict}`),
     DESCRIPTION: esc(description),
+    KEYWORDS: esc(keywords),
     URL: SITE.url,
     SITE_NAME: esc(SITE.name),
     OG_IMAGE: ogImage,
@@ -197,7 +251,26 @@ async function main() {
   <url><loc>${SITE.url}/</loc><lastmod>${updatedIso}</lastmod><changefreq>hourly</changefreq><priority>1.0</priority></url>
 </urlset>
 `);
-  await writeFile(join(OUT, "robots.txt"), `User-agent: *\nAllow: /\n\nSitemap: ${SITE.url}/sitemap.xml\n`);
+  // Welcome search and AI-answer crawlers explicitly (ChatGPT, Perplexity, Claude, Google AI).
+  const bots = ["*", "Googlebot", "Bingbot", "GPTBot", "OAI-SearchBot", "ChatGPT-User", "PerplexityBot", "ClaudeBot", "Claude-SearchBot", "Google-Extended", "Applebot"];
+  await writeFile(join(OUT, "robots.txt"),
+    bots.map(b => `User-agent: ${b}\nAllow: /\n`).join("\n") + `\nSitemap: ${SITE.url}/sitemap.xml\n`);
+
+  // llms.txt: plain-text summary for AI search/answer engines, with the live verdict.
+  await writeFile(join(OUT, "llms.txt"),
+`# Is the AI Bubble Over?
+
+> Live tracker answering "Is the AI bubble over?" with four measurable criteria, updated automatically several times a day. Current answer: ${verdict} (${met} of ${total} criteria met, updated ${updatedHuman}).
+
+## Current criteria
+${criteria.map(c => `- ${c.title}: ${c.rule} Now: ${c.display}. ${c.met ? "MET" : "NOT MET"}.`).join("\n")}
+
+## Links
+- [Live page](${SITE.url}/): verdict and explanation
+- [Raw data (JSON)](${SITE.url}/data.json): machine-readable values
+
+Sources: Yahoo Finance / Nasdaq.com (prices), SEC EDGAR (capex), Vast.ai (GPU rental prices). Not financial advice.
+`);
 
   // Static assets live in ./static and are copied as-is.
   for (const f of ["favicon.svg", "apple-touch-icon.png", "og-not-yet.png", "og-yes.png"]) {

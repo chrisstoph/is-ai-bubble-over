@@ -3,12 +3,12 @@
 // ------------------------------------------------------------------
 export const SITE = {
   // Public URL of the page, no trailing slash. Used for canonical, OG, sitemap.
-  url: process.env.SITE_URL || "https://isaibubbleover.com",
+  url: process.env.SITE_URL || "https://istheaibubbleover.com",
   name: "Is the AI Bubble Over?",
   // GA4 Measurement ID. Leave empty to disable analytics.
   gaId: process.env.GA_ID || "G-XXXXXXXXXX",
   // SEC requires a descriptive User-Agent with a contact address.
-  secUserAgent: process.env.SEC_USER_AGENT || "isaibubbleover.com contact@isaibubbleover.com",
+  secUserAgent: process.env.SEC_USER_AGENT || "istheaibubbleover.com contact@istheaibubbleover.com",
   // Optional: your X/Twitter handle for twitter:site, e.g. "@kristof"
   twitter: process.env.TWITTER_HANDLE || "",
 };
@@ -20,7 +20,7 @@ export const SITE = {
 export const CRITERIA = [
   {
     id: "nvda",
-    title: "Nvidia crashes",
+    title: "Nvidia stock crashes",
     rule: "NVDA trades at least 50% below its all-time high.",
     op: "gte", threshold: 50,
     format: v => `${v.toFixed(1)}% below peak`,
@@ -28,7 +28,7 @@ export const CRITERIA = [
   },
   {
     id: "ndx",
-    title: "Tech enters a deep bear market",
+    title: "AI and tech stocks enter a bear market",
     rule: "The Nasdaq-100 is at least 30% below its all-time high.",
     op: "gte", threshold: 30,
     format: v => `${v.toFixed(1)}% below peak`,
@@ -44,7 +44,7 @@ export const CRITERIA = [
   },
   {
     id: "gpu",
-    title: "Compute glut",
+    title: "GPU glut: H100 prices collapse",
     rule: "Median on-demand H100 rental price falls below $1.00 per GPU-hour.",
     op: "lt", threshold: 1.0,
     format: v => `$${v.toFixed(2)} / GPU-hour`,

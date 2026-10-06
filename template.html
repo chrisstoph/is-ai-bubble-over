@@ -5,8 +5,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>{{TITLE}}</title>
 <meta name="description" content="{{DESCRIPTION}}">
+<meta name="keywords" content="{{KEYWORDS}}">
 <link rel="canonical" href="{{URL}}/">
-<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<link rel="alternate" hreflang="en" href="{{URL}}/">
+<link rel="alternate" hreflang="x-default" href="{{URL}}/">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta name="bingbot" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta name="application-name" content="{{SITE_NAME}}">
+<meta name="apple-mobile-web-app-title" content="AI Bubble?">
+<meta name="format-detection" content="telephone=no">
+<meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="theme-color" content="#ffffff">
 <meta name="author" content="{{SITE_NAME}}">
 
@@ -20,12 +29,19 @@
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Is the AI Bubble over? {{VERDICT}}">
+<meta property="og:image:type" content="image/png">
 <meta property="og:locale" content="en_US">
 <meta property="og:updated_time" content="{{UPDATED_ISO}}">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="{{OG_TITLE}}">
 <meta name="twitter:description" content="{{DESCRIPTION}}">
 <meta name="twitter:image" content="{{URL}}/{{OG_IMAGE}}">
+<meta name="twitter:image:alt" content="Is the AI Bubble over? {{VERDICT}}">
+<!-- Slack / X preview labels -->
+<meta name="twitter:label1" content="Verdict">
+<meta name="twitter:data1" content="{{VERDICT}}">
+<meta name="twitter:label2" content="Signals met">
+<meta name="twitter:data2" content="{{MET}} of {{TOTAL}}">
 {{TWITTER_SITE}}
 
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
@@ -78,6 +94,11 @@
 </header>
 
 <main>
+  <section id="about" aria-labelledby="about-h">
+    <h2 id="about-h">The AI bubble tracker</h2>
+    <p class="intro">Is the AI bubble about to burst, or has it already? Instead of opinions, this page checks the hard signals a burst would leave behind: an Nvidia stock crash, a bear market in AI and tech stocks, Big Tech cutting its AI spending, and a glut of cheap GPUs. The data updates automatically from public sources, and the answer above changes the moment all of them are true.</p>
+  </section>
+
   <section id="criteria" aria-labelledby="criteria-h">
     <h2 id="criteria-h">The {{TOTAL_WORD}} criteria</h2>
     <p class="intro">The answer flips to <strong>Yes</strong> only when all {{TOTAL_WORD}} are met at the same time. Every number is pulled automatically from public data.</p>
@@ -88,7 +109,7 @@
   </section>
 
   <section id="faq" aria-labelledby="faq-h">
-    <h2 id="faq-h">Questions</h2>
+    <h2 id="faq-h">AI bubble FAQ</h2>
 {{FAQ_HTML}}
   </section>
 </main>
