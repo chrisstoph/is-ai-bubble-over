@@ -1,0 +1,13 @@
+{
+  "name": "is-the-ai-bubble-over",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Live tracker: is the AI bubble over?",
+  "engines": { "node": ">=18" },
+  "scripts": {
+    "build": "node build.mjs",
+    "build:mock": "MOCK=1 node build.mjs",
+    "start": "node server.mjs"
+  }
+}
