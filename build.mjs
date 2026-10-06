@@ -141,10 +141,16 @@ function render(tpl, data) {
     ],
   };
 
-  const ga = SITE.gaId ? `<link rel="preconnect" href="https://www.googletagmanager.com">
-<script async src="https://www.googletagmanager.com/gtag/js?id=${esc(SITE.gaId)}"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','${esc(SITE.gaId)}',{verdict:'${isYes ? "yes" : "not_yet"}',criteria_met:${met}});</script>` : "";
+  const ga = SITE.gaId ? `<script async src="https://www.googletagmanager.com/gtag/js?id=${esc(SITE.gaId)}"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
+  gtag('config', '${esc(SITE.gaId)}');
+</script>` : "";
+
+  
   const tokens = {
     TITLE: esc(title),
     OG_TITLE: esc(`Is the AI Bubble over? ${verdict}`),
