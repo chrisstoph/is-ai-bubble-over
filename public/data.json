@@ -2,7 +2,7 @@
   "verdict": "Not yet.",
   "met": 0,
   "total": 4,
-  "updated": "2026-10-07T10:15:54.906Z",
+  "updated": "2026-10-07T10:35:08.908Z",
   "criteria": [
     {
       "id": "nvda",
@@ -17,7 +17,7 @@
       "detail": "NVDA at $239.24 vs. all-time high of $239.24 (2026-10-01).",
       "source": "Yahoo Finance",
       "sourceUrl": "https://finance.yahoo.com/quote/NVDA/history",
-      "fetchedAt": "2026-10-07T10:15:52.639Z",
+      "fetchedAt": "2026-10-07T10:35:06.095Z",
       "stale": false
     },
     {
@@ -33,7 +33,7 @@
       "detail": "Nasdaq-100 at 31,225 vs. all-time high of 31,225 (2026-10-07).",
       "source": "Yahoo Finance",
       "sourceUrl": "https://finance.yahoo.com/quote/%5ENDX/history",
-      "fetchedAt": "2026-10-07T10:15:52.639Z",
+      "fetchedAt": "2026-10-07T10:35:06.095Z",
       "stale": false
     },
     {
@@ -49,7 +49,7 @@
       "detail": "2026 Q2: $165.1B combined vs. $88.2B a year earlier.",
       "source": "SEC EDGAR filings",
       "sourceUrl": "https://www.sec.gov/edgar/search/",
-      "fetchedAt": "2026-10-07T10:15:52.639Z",
+      "fetchedAt": "2026-10-07T10:35:06.095Z",
       "stale": false
     },
     {
@@ -59,13 +59,13 @@
       "why": "If GPUs become nearly free to rent, the world built more AI capacity than anyone is willing to pay for — the classic overbuild of a bubble.",
       "op": "lt",
       "threshold": 1,
-      "value": 2.54,
-      "display": "$2.54 / GPU-hour",
+      "value": 2.77,
+      "display": "$2.77 / GPU-hour",
       "met": false,
       "detail": "Median of 6 live H100 offers (range $1.25–$3.91).",
       "source": "Vast.ai GPU marketplace",
       "sourceUrl": "https://vast.ai/pricing",
-      "fetchedAt": "2026-10-07T10:15:52.639Z",
+      "fetchedAt": "2026-10-07T10:35:06.095Z",
       "stale": false
     }
   ]
