@@ -160,7 +160,9 @@ function render(tpl, data) {
         "@type": "WebPage", "@id": `${pageUrl}#webpage`, url: pageUrl, name: title, description,
         isPartOf: { "@id": `${pageUrl}#website` }, inLanguage: "en",
         dateModified: updatedIso, datePublished: "2026-10-06",
-        primaryImageOfPage: { "@type": "ImageObject", url: `${SITE.url}/${ogImage}`, width: 1200, height: 630 },
+        primaryImageOfPage: { "@type": "ImageObject", url: `${SITE.url}/cover-2000.jpg`, width: 2000, height: 1116,
+          caption: "A red balloon with the AI sparkle symbol about to be popped by a needle" },
+        image: [`${SITE.url}/cover-2000.jpg`, `${SITE.url}/${ogImage}`],
         keywords,
         about: [
           { "@type": "Thing", name: "AI bubble" },
@@ -194,16 +196,10 @@ function render(tpl, data) {
     ],
   };
 
-  const ga = SITE.gaId ? `<script async src="https://www.googletagmanager.com/gtag/js?id=${esc(SITE.gaId)}"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  const ga = SITE.gaId ? `<link rel="preconnect" href="https://www.googletagmanager.com">
+<script async src="https://www.googletagmanager.com/gtag/js?id=${esc(SITE.gaId)}"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','${esc(SITE.gaId)}',{verdict:'${isYes ? "yes" : "not_yet"}',criteria_met:${met}});</script>` : "";
 
-  gtag('config', '${esc(SITE.gaId)}');
-</script>` : "";
-
-  
   const tokens = {
     TITLE: esc(title),
     OG_TITLE: esc(`Is the AI Bubble over? ${verdict}`),
@@ -273,7 +269,9 @@ Sources: Yahoo Finance / Nasdaq.com (prices), SEC EDGAR (capex), Vast.ai (GPU re
 `);
 
   // Static assets live in ./static and are copied as-is.
-  for (const f of ["favicon.svg", "apple-touch-icon.png", "og-not-yet.png", "og-yes.png"]) {
+  for (const f of ["favicon.svg", "favicon.ico", "favicon-96.png", "apple-touch-icon.png", "icon-192.png", "icon-512.png",
+                   "site.webmanifest", "og-not-yet.png", "og-yes.png",
+                   ...[800, 1400, 2000].flatMap(w => [`cover-${w}.webp`, `cover-${w}.jpg`])]) {
     const src = join(ROOT, "static", f);
     if (existsSync(src)) await copyFile(src, join(OUT, f));
   }
