@@ -63,18 +63,13 @@
   a{color:inherit}
   .hero{min-height:100vh;min-height:100svh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:24px 16px 72px;position:relative}
   .hero h1{font-size:clamp(2.2rem,8vw,6.5rem);font-weight:900;line-height:1.02;letter-spacing:-.03em;max-width:14ch}
-  .verdict{margin-top:.25em;font-size:clamp(4.5rem,22vw,17rem);font-weight:900;line-height:.9;letter-spacing:-.05em;text-transform:uppercase;color:var(--no)}
+  .verdict{margin-top:.25em;font-size:clamp(4.5rem,min(22vw,30vh),17rem);font-weight:900;line-height:.9;letter-spacing:-.05em;text-transform:uppercase;color:var(--no)}
   .verdict.yes{color:var(--yes)}
   .scroll-hint{position:absolute;bottom:24px;left:50%;transform:translateX(-50%);font-size:.85rem;color:var(--muted);text-decoration:none;white-space:nowrap}
   .scroll-hint:hover{color:var(--ink)}
-  .cover{max-width:1100px;margin:0 auto;padding:0}
-  .cover img{display:block;width:100%;height:auto;
-    /* soft fade on all edges so the gray photo background melts into the white page */
-    -webkit-mask-image:linear-gradient(to bottom,transparent,#000 18%,#000 80%,transparent),linear-gradient(to right,transparent,#000 12%,#000 88%,transparent);
-    -webkit-mask-composite:source-in;
-    mask-image:linear-gradient(to bottom,transparent,#000 18%,#000 80%,transparent),linear-gradient(to right,transparent,#000 12%,#000 88%,transparent);
-    mask-composite:intersect}
-  main{max-width:720px;margin:0 auto;padding:24px 16px 24px}
+  /* small image above the headline; height capped so the text stays on the first screen */
+  .hero-img img{display:block;height:clamp(64px,13vh,130px);width:auto;max-width:none;margin:0 auto 8px}
+  main{max-width:720px;margin:0 auto;padding:48px 16px 24px;border-top:1px solid var(--line)}
   section+section{margin-top:56px}
   h2{font-size:1.25rem;font-weight:700}
   .intro{color:var(--muted);font-size:.95rem;margin-top:6px}
@@ -98,19 +93,16 @@
 <body>
 
 <header class="hero">
+  <picture class="hero-img">
+    <source type="image/webp" srcset="hero-400.webp 400w, hero-800.webp 800w, hero-1200.webp 1200w" sizes="370px">
+    <img src="hero-800.jpg" srcset="hero-400.jpg 400w, hero-800.jpg 800w, hero-1200.jpg 1200w" sizes="370px"
+         width="1200" height="427" fetchpriority="high" decoding="async"
+         alt="A red balloon with the AI sparkle symbol, with a needle about to pop it: an illustration of the AI bubble">
+  </picture>
   <h1>Is the AI Bubble over?</h1>
   <p class="verdict{{VERDICT_CLASS}}">{{VERDICT}}</p>
   <a class="scroll-hint" href="#criteria">How we decide ↓</a>
 </header>
-
-<figure class="cover">
-  <picture>
-    <source type="image/webp" srcset="cover-800.webp 800w, cover-1400.webp 1400w, cover-2000.webp 2000w" sizes="(max-width: 1100px) 100vw, 1100px">
-    <img src="cover-1400.jpg" srcset="cover-800.jpg 800w, cover-1400.jpg 1400w, cover-2000.jpg 2000w" sizes="(max-width: 1100px) 100vw, 1100px"
-         width="2000" height="1116" loading="lazy" decoding="async"
-         alt="A red balloon with the AI sparkle symbol, with a needle about to pop it: an illustration of the AI bubble">
-  </picture>
-</figure>
 
 <main>
   <section id="about" aria-labelledby="about-h">

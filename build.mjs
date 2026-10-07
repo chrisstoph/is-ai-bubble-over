@@ -160,9 +160,9 @@ function render(tpl, data) {
         "@type": "WebPage", "@id": `${pageUrl}#webpage`, url: pageUrl, name: title, description,
         isPartOf: { "@id": `${pageUrl}#website` }, inLanguage: "en",
         dateModified: updatedIso, datePublished: "2026-10-06",
-        primaryImageOfPage: { "@type": "ImageObject", url: `${SITE.url}/cover-2000.jpg`, width: 2000, height: 1116,
+        primaryImageOfPage: { "@type": "ImageObject", url: `${SITE.url}/hero-1200.jpg`, width: 1200, height: 427,
           caption: "A red balloon with the AI sparkle symbol about to be popped by a needle" },
-        image: [`${SITE.url}/cover-2000.jpg`, `${SITE.url}/${ogImage}`],
+        image: [`${SITE.url}/hero-1200.jpg`, `${SITE.url}/${ogImage}`],
         keywords,
         about: [
           { "@type": "Thing", name: "AI bubble" },
@@ -271,7 +271,7 @@ Sources: Yahoo Finance / Nasdaq.com (prices), SEC EDGAR (capex), Vast.ai (GPU re
   // Static assets live in ./static and are copied as-is.
   for (const f of ["favicon.svg", "favicon.ico", "favicon-96.png", "apple-touch-icon.png", "icon-192.png", "icon-512.png",
                    "site.webmanifest", "og-not-yet.png", "og-yes.png",
-                   ...[800, 1400, 2000].flatMap(w => [`cover-${w}.webp`, `cover-${w}.jpg`])]) {
+                   ...[400, 800, 1200].flatMap(w => [`hero-${w}.webp`, `hero-${w}.jpg`])]) {
     const src = join(ROOT, "static", f);
     if (existsSync(src)) await copyFile(src, join(OUT, f));
   }
