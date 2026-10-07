@@ -2,7 +2,7 @@
   "verdict": "Not yet.",
   "met": 0,
   "total": 4,
-  "updated": "2026-10-07T00:42:37.019Z",
+  "updated": "2026-10-07T08:26:08.707Z",
   "criteria": [
     {
       "id": "nvda",
@@ -14,10 +14,10 @@
       "value": 0,
       "display": "0.0% below peak",
       "met": false,
-      "detail": "NVDA at $239.24 vs. all-time high of $239.24 (2026-10-06).",
+      "detail": "NVDA at $239.24 vs. all-time high of $239.24 (2026-10-01).",
       "source": "Yahoo Finance",
       "sourceUrl": "https://finance.yahoo.com/quote/NVDA/history",
-      "fetchedAt": "2026-10-07T00:42:34.658Z",
+      "fetchedAt": "2026-10-07T08:26:07.015Z",
       "stale": false
     },
     {
@@ -33,7 +33,7 @@
       "detail": "Nasdaq-100 at 31,225 vs. all-time high of 31,225 (2026-10-07).",
       "source": "Yahoo Finance",
       "sourceUrl": "https://finance.yahoo.com/quote/%5ENDX/history",
-      "fetchedAt": "2026-10-07T00:42:34.658Z",
+      "fetchedAt": "2026-10-07T08:26:07.015Z",
       "stale": false
     },
     {
@@ -49,7 +49,7 @@
       "detail": "2026 Q2: $165.1B combined vs. $88.2B a year earlier.",
       "source": "SEC EDGAR filings",
       "sourceUrl": "https://www.sec.gov/edgar/search/",
-      "fetchedAt": "2026-10-07T00:42:34.658Z",
+      "fetchedAt": "2026-10-07T08:26:07.015Z",
       "stale": false
     },
     {
@@ -59,13 +59,13 @@
       "why": "If GPUs become nearly free to rent, the world built more AI capacity than anyone is willing to pay for — the classic overbuild of a bubble.",
       "op": "lt",
       "threshold": 1,
-      "value": 2.92,
-      "display": "$2.92 / GPU-hour",
+      "value": 2.57,
+      "display": "$2.57 / GPU-hour",
       "met": false,
-      "detail": "Median of 9 live H100 offers (range $1.25–$3.91).",
+      "detail": "Median of 6 live H100 offers (range $1.25–$3.91).",
       "source": "Vast.ai GPU marketplace",
       "sourceUrl": "https://vast.ai/pricing",
-      "fetchedAt": "2026-10-07T00:42:34.658Z",
+      "fetchedAt": "2026-10-07T08:26:07.015Z",
       "stale": false
     }
   ]
