@@ -2,7 +2,7 @@
   "verdict": "Not yet.",
   "met": 0,
   "total": 4,
-  "updated": "2026-10-14T23:55:00.995Z",
+  "updated": "2026-10-15T04:38:38.210Z",
   "criteria": [
     {
       "id": "nvda",
@@ -11,13 +11,13 @@
       "why": "Nvidia is the purest public bet on AI. Every past tech bubble ended with its leader losing more than half its value (Cisco fell ~80% after 2000).",
       "op": "gte",
       "threshold": 50,
-      "value": 3.2,
-      "display": "3.2% below peak",
+      "value": 3.1,
+      "display": "3.1% below peak",
       "met": false,
-      "detail": "NVDA at $221.30 vs. all-time high of $228.52 (2026-10-01).",
+      "detail": "NVDA at $221.30 vs. all-time high of $228.38 (2026-09-01).",
       "source": "Yahoo Finance",
       "sourceUrl": "https://finance.yahoo.com/quote/NVDA/history",
-      "fetchedAt": "2026-10-14T23:54:58.575Z",
+      "fetchedAt": "2026-10-15T04:38:36.134Z",
       "stale": false
     },
     {
@@ -27,13 +27,13 @@
       "why": "A bubble bursting drags the whole sector, not just one stock. The Nasdaq-100 fell 33% in 2022 and 83% after the dot-com peak.",
       "op": "gte",
       "threshold": 30,
-      "value": 2,
-      "display": "2.0% below peak",
+      "value": 1.5,
+      "display": "1.5% below peak",
       "met": false,
-      "detail": "Nasdaq-100 at 29,951 vs. all-time high of 30,569 (2026-10-01).",
+      "detail": "Nasdaq-100 at 29,951 vs. all-time high of 30,409 (2026-07-01).",
       "source": "Yahoo Finance",
       "sourceUrl": "https://finance.yahoo.com/quote/%5ENDX/history",
-      "fetchedAt": "2026-10-14T23:54:58.575Z",
+      "fetchedAt": "2026-10-15T04:38:36.134Z",
       "stale": false
     },
     {
@@ -49,7 +49,7 @@
       "detail": "2026 Q2: $165.1B combined vs. $88.2B a year earlier.",
       "source": "SEC EDGAR filings",
       "sourceUrl": "https://www.sec.gov/edgar/search/",
-      "fetchedAt": "2026-10-14T23:54:58.575Z",
+      "fetchedAt": "2026-10-15T04:38:36.134Z",
       "stale": false
     },
     {
@@ -59,13 +59,13 @@
       "why": "If GPUs become nearly free to rent, the world built more AI capacity than anyone is willing to pay for — the classic overbuild of a bubble.",
       "op": "lt",
       "threshold": 1,
-      "value": 2.77,
-      "display": "$2.77 / GPU-hour",
+      "value": 2.67,
+      "display": "$2.67 / GPU-hour",
       "met": false,
-      "detail": "Median of 7 live H100 offers (range $1.92–$3.67).",
+      "detail": "Median of 8 live H100 offers (range $2.00–$2.94).",
       "source": "Vast.ai GPU marketplace",
       "sourceUrl": "https://vast.ai/pricing",
-      "fetchedAt": "2026-10-14T23:54:58.575Z",
+      "fetchedAt": "2026-10-15T04:38:36.134Z",
       "stale": false
     }
   ]
