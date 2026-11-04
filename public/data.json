@@ -2,7 +2,7 @@
   "verdict": "Not yet.",
   "met": 0,
   "total": 4,
-  "updated": "2026-11-04T06:22:03.474Z",
+  "updated": "2026-11-04T17:15:03.326Z",
   "criteria": [
     {
       "id": "nvda",
@@ -11,13 +11,13 @@
       "why": "Nvidia is the purest public bet on AI. Every past tech bubble ended with its leader losing more than half its value (Cisco fell ~80% after 2000).",
       "op": "gte",
       "threshold": 50,
-      "value": 9.5,
-      "display": "9.5% below peak",
+      "value": 11.1,
+      "display": "11.1% below peak",
       "met": false,
-      "detail": "NVDA at $206.69 vs. all-time high of $228.38 (2026-09-01).",
+      "detail": "NVDA at $202.99 vs. all-time high of $228.38 (2026-09-01).",
       "source": "Yahoo Finance",
       "sourceUrl": "https://finance.yahoo.com/quote/NVDA/history",
-      "fetchedAt": "2026-11-04T06:22:01.014Z",
+      "fetchedAt": "2026-11-04T17:14:59.455Z",
       "stale": false
     },
     {
@@ -27,13 +27,13 @@
       "why": "A bubble bursting drags the whole sector, not just one stock. The Nasdaq-100 fell 33% in 2022 and 83% after the dot-com peak.",
       "op": "gte",
       "threshold": 30,
-      "value": 7.3,
-      "display": "7.3% below peak",
+      "value": 6.1,
+      "display": "6.1% below peak",
       "met": false,
-      "detail": "Nasdaq-100 at 28,180 vs. all-time high of 30,409 (2026-07-01).",
+      "detail": "Nasdaq-100 at 28,545 vs. all-time high of 30,409 (2026-07-01).",
       "source": "Yahoo Finance",
       "sourceUrl": "https://finance.yahoo.com/quote/%5ENDX/history",
-      "fetchedAt": "2026-11-04T06:22:01.014Z",
+      "fetchedAt": "2026-11-04T17:14:59.455Z",
       "stale": false
     },
     {
@@ -49,7 +49,7 @@
       "detail": "2026 Q3: $201.9B combined vs. $97.3B a year earlier.",
       "source": "SEC EDGAR filings",
       "sourceUrl": "https://www.sec.gov/edgar/search/",
-      "fetchedAt": "2026-11-04T06:22:01.014Z",
+      "fetchedAt": "2026-11-04T17:14:59.455Z",
       "stale": false
     },
     {
@@ -62,10 +62,10 @@
       "value": 2.4,
       "display": "$2.40 / GPU-hour",
       "met": false,
-      "detail": "Median of 8 live H100 offers (range $1.33–$3.15).",
+      "detail": "Median of 9 live H100 offers (range $2.16–$3.39).",
       "source": "Vast.ai GPU marketplace",
       "sourceUrl": "https://vast.ai/pricing",
-      "fetchedAt": "2026-11-04T06:22:01.014Z",
+      "fetchedAt": "2026-11-04T17:14:59.455Z",
       "stale": false
     }
   ]
