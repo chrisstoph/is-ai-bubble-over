@@ -2,7 +2,7 @@
   "verdict": "Not yet.",
   "met": 0,
   "total": 4,
-  "updated": "2026-11-06T23:07:51.233Z",
+  "updated": "2026-11-07T05:57:48.840Z",
   "criteria": [
     {
       "id": "nvda",
@@ -17,7 +17,7 @@
       "detail": "NVDA at $186.64 vs. all-time high of $228.38 (2026-09-01).",
       "source": "Yahoo Finance",
       "sourceUrl": "https://finance.yahoo.com/quote/NVDA/history",
-      "fetchedAt": "2026-11-06T23:07:48.992Z",
+      "fetchedAt": "2026-11-07T05:57:46.287Z",
       "stale": false
     },
     {
@@ -33,7 +33,7 @@
       "detail": "Nasdaq-100 at 26,990 vs. all-time high of 30,409 (2026-07-01).",
       "source": "Yahoo Finance",
       "sourceUrl": "https://finance.yahoo.com/quote/%5ENDX/history",
-      "fetchedAt": "2026-11-06T23:07:48.992Z",
+      "fetchedAt": "2026-11-07T05:57:46.287Z",
       "stale": false
     },
     {
@@ -49,7 +49,7 @@
       "detail": "2026 Q3: $201.9B combined vs. $97.3B a year earlier.",
       "source": "SEC EDGAR filings",
       "sourceUrl": "https://www.sec.gov/edgar/search/",
-      "fetchedAt": "2026-11-06T23:07:48.992Z",
+      "fetchedAt": "2026-11-07T05:57:46.287Z",
       "stale": false
     },
     {
@@ -62,10 +62,10 @@
       "value": 2.33,
       "display": "$2.33 / GPU-hour",
       "met": false,
-      "detail": "Median of 13 live H100 offers (range $1.87–$3.38).",
+      "detail": "Median of 11 live H100 offers (range $1.34–$3.39).",
       "source": "Vast.ai GPU marketplace",
       "sourceUrl": "https://vast.ai/pricing",
-      "fetchedAt": "2026-11-06T23:07:48.992Z",
+      "fetchedAt": "2026-11-07T05:57:46.287Z",
       "stale": false
     }
   ]
