@@ -2,7 +2,7 @@
   "verdict": "Not yet.",
   "met": 0,
   "total": 4,
-  "updated": "2026-11-12T19:53:37.918Z",
+  "updated": "2026-11-13T01:49:31.573Z",
   "criteria": [
     {
       "id": "nvda",
@@ -11,13 +11,13 @@
       "why": "Nvidia is the purest public bet on AI. Every past tech bubble ended with its leader losing more than half its value (Cisco fell ~80% after 2000).",
       "op": "gte",
       "threshold": 50,
-      "value": 28,
-      "display": "28.0% below peak",
+      "value": 27.2,
+      "display": "27.2% below peak",
       "met": false,
-      "detail": "NVDA at $164.36 vs. all-time high of $228.38 (2026-09-01).",
+      "detail": "NVDA at $166.19 vs. all-time high of $228.38 (2026-09-01).",
       "source": "Yahoo Finance",
       "sourceUrl": "https://finance.yahoo.com/quote/NVDA/history",
-      "fetchedAt": "2026-11-12T19:53:35.910Z",
+      "fetchedAt": "2026-11-13T01:49:29.826Z",
       "stale": false
     },
     {
@@ -30,10 +30,10 @@
       "value": 7,
       "display": "7.0% below peak",
       "met": false,
-      "detail": "Nasdaq-100 at 28,294 vs. all-time high of 30,409 (2026-07-01).",
+      "detail": "Nasdaq-100 at 28,289 vs. all-time high of 30,409 (2026-07-01).",
       "source": "Yahoo Finance",
       "sourceUrl": "https://finance.yahoo.com/quote/%5ENDX/history",
-      "fetchedAt": "2026-11-12T19:53:35.910Z",
+      "fetchedAt": "2026-11-13T01:49:29.826Z",
       "stale": false
     },
     {
@@ -49,7 +49,7 @@
       "detail": "2026 Q3: $201.9B combined vs. $97.3B a year earlier.",
       "source": "SEC EDGAR filings",
       "sourceUrl": "https://www.sec.gov/edgar/search/",
-      "fetchedAt": "2026-11-12T19:53:35.910Z",
+      "fetchedAt": "2026-11-13T01:49:29.826Z",
       "stale": false
     },
     {
@@ -62,10 +62,10 @@
       "value": 2.67,
       "display": "$2.67 / GPU-hour",
       "met": false,
-      "detail": "Median of 11 live H100 offers (range $2.14–$3.40).",
+      "detail": "Median of 9 live H100 offers (range $2.20–$3.42).",
       "source": "Vast.ai GPU marketplace",
       "sourceUrl": "https://vast.ai/pricing",
-      "fetchedAt": "2026-11-12T19:53:35.910Z",
+      "fetchedAt": "2026-11-13T01:49:29.826Z",
       "stale": false
     }
   ]
